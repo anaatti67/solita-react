@@ -1,5 +1,6 @@
-// import nameData from '../../names/names.json'
+import nameData from '../../names/names.json'
 import { Component, React } from 'react'
+import './four.css'
 
 // const { names } = nameData
 
@@ -7,7 +8,10 @@ class Four extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      name: ''
+      name: '',
+      foundName: '',
+      foundAge: '',
+      foundMatch: false
     }
     this.nameHandler = this.nameHandler.bind(this)
   }
@@ -15,15 +19,29 @@ class Four extends Component {
   nameHandler (event) {
     this.setState({ value: event.target.value })
     const nameFound = event.target.value
-    console.log(nameFound)
+    for (const x of nameData.names) {
+      if (x.name === nameFound) {
+        this.setState({ foundName: x.name })
+        this.setState({ foundAge: x.amount })
+        this.setState({ foundMatch: true })
+      } else {
+        this.setState({ foundMatch: false })
+      }
+    }
   }
 
   render () {
     return (
         <div className="Four">
- 
-            <input type="text" name="name" onChange={this.nameHandler}></input>
-            <button onClick={this.nameHandler} className="btn btn-primary">Search</button>
+          <h1>Here you can search people wokring in Solita and see how many there are!</h1>
+          <h2>Just write the name you want to find and remember to use capital letter!</h2>
+            <input type="text" placeholder="Name for example Ville" name="name" onChange={this.nameHandler}></input>
+            <p>
+              {'Name: ' + this.state.foundName}
+            </p>
+            <p>
+            {' Amount: ' + this.state.foundAge}
+            </p>
         </div>
     )
   }
