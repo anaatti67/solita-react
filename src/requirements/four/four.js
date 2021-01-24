@@ -10,8 +10,8 @@ class Four extends Component {
     this.state = {
       name: '',
       foundName: '',
-      foundAge: '',
-      foundMatch: false
+      foundAge: ''
+      // foundMatch: false
     }
     this.nameHandler = this.nameHandler.bind(this)
   }
@@ -23,9 +23,9 @@ class Four extends Component {
       if (x.name === nameFound) {
         this.setState({ foundName: x.name })
         this.setState({ foundAge: x.amount })
-        this.setState({ foundMatch: true })
+        // this.setState({ foundMatch: true })
       } else {
-        this.setState({ foundMatch: false })
+        // this.setState({ foundMatch: false })
       }
     }
   }
