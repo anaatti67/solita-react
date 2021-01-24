@@ -21,7 +21,7 @@ class Four extends Component {
   render () {
     return (
         <div className="Four">
-
+ 
             <input type="text" name="name" onChange={this.nameHandler}></input>
             <button onClick={this.nameHandler} className="btn btn-primary">Search</button>
         </div>
